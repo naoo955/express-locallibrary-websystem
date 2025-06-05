@@ -3,109 +3,110 @@
   padding: 0;
   list-style: none;
 }
-/* ベーススタイル */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP&family=Noto+Sans+JP&display=swap');
+
 body {
-  font-family: "Yu Gothic UI", "Segoe UI", "メイリオ", sans-serif;
-  background: linear-gradient(to bottom, #e6f0ff, #ffffff);
+  font-family: 'Noto Serif JP', serif;
+  background: 
+    url('https://images.unsplash.com/photo-1512820790803-83ca734da794?ixlib=rb-4.0.3&auto=format&fit=crop&w=1280&q=80') no-repeat center center fixed;
+  background-size: cover;
+  background-color: #e6f2f1; /* カバー画像読込失敗時用 */
+  color: #1b2a2a;
+  min-height: 100vh;
   margin: 0;
   padding: 0;
-  color: #333;
-  min-height: 100vh;
+  /* ほんのり白のオーバーレイで文字を読みやすく */
+  position: relative;
+}
+body::before {
+  content: "";
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(230, 242, 241, 0.85);
+  pointer-events: none;
+  z-index: 0;
 }
 
-/* コンテナ */
 .container {
-  max-width: 800px;
-  margin: 60px auto;
-  padding: 30px;
-  background-color: #ffffff;
-  border-radius: 10px;
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.08);
+  max-width: 720px;
+  margin: 80px auto 60px;
+  padding: 40px 50px;
+  background: #fcfcfa;
+  border-radius: 20px;
+  box-shadow:
+    0 12px 30px rgba(27, 42, 42, 0.25),
+    0 6px 16px rgba(27, 42, 42, 0.15);
+  border: 1px solid #b0c4b8;
+  position: relative;
+  z-index: 1;
 }
 
-/* タイトル */
+/* ヘッダーに本アイコンを左に追加 */
 h1 {
-  font-size: 2rem;
-  color: #2c3e50;
-  border-bottom: 2px solid #ccc;
-  padding-bottom: 10px;
-  margin-bottom: 25px;
+  font-family: 'Noto Serif JP', serif;
+  font-weight: 700;
+  font-size: 3rem;
+  color: #165a57;
+  margin-bottom: 32px;
+  border-bottom: 4px solid #0f403e;
+  padding-bottom: 14px;
+  position: relative;
+  padding-left: 60px;
 }
 
-/* フォームグループ */
-.form-group {
-  margin-bottom: 20px;
+h1::before {
+  content: "\1F4D6"; /* 📖 本の絵文字 */
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 3.2rem;
+  color: #0f403e;
+  text-shadow: 1px 1px 2px rgba(21,90,87,0.4);
 }
 
-label {
-  display: block;
-  font-weight: bold;
-  margin-bottom: 6px;
-  color: #2d4059;
-}
-
+/* 入力などは少しティール寄り */
 input[type="text"],
 select,
 textarea {
-  width: 100%;
-  padding: 10px;
-  border: 1px solid #bbb;
-  border-radius: 4px;
-  font-size: 1rem;
-  background-color: #fefefe;
-  transition: border-color 0.2s ease;
+  border: 2px solid #7ea49e;
+  background-color: #f5f9f8;
+  color: #165a57;
+  box-shadow: inset 0 2px 4px rgba(126, 164, 158, 0.2);
 }
 
-input:focus,
-textarea:focus,
-select:focus {
-  border-color: #4a90e2;
-  outline: none;
+input[type="text"]:focus,
+select:focus,
+textarea:focus {
+  border-color: #0f403e;
+  box-shadow: 0 0 12px rgba(15, 64, 62, 0.6);
 }
 
-textarea {
-  resize: vertical;
-  min-height: 100px;
-}
-
-/* チェックボックス */
-.checkbox-input {
-  margin-right: 4px;
-}
-
-.form-group div.inline-checkbox {
-  display: inline-block;
-  margin-right: 15px;
-}
-
-.form-group label[for^="genre"] {
-  display: inline;
-  font-weight: normal;
-}
-
-/* ボタン */
+/* ボタンはティール系ブルーグリーン */
 button.btn {
-  background-color: #4a90e2;
-  border: none;
-  padding: 10px 24px;
-  color: white;
-  font-size: 1rem;
-  border-radius: 6px;
-  cursor: pointer;
-  transition: background-color 0.2s ease;
+  background: linear-gradient(45deg, #0f403e, #165a57);
+  box-shadow: 0 6px 18px rgba(22, 90, 87, 0.7);
+}
+button.btn:hover,
+button.btn:focus {
+  background: linear-gradient(45deg, #165a57, #0f403e);
+  box-shadow: 0 9px 22px rgba(15, 64, 62, 0.9);
 }
 
-button.btn:hover {
-  background-color: #357abd;
-}
-
-/* エラーメッセージ */
-ul {
-  margin-top: 20px;
-  padding-left: 20px;
-  color: #e74c3c;
-}
-
+/* エラー表示は落ち着いたオレンジベースに */
 ul li {
-  margin-bottom: 5px;
+  background-color: #f4a261; /* ソフトオレンジ */
+  color: #5f370e;
+  box-shadow: 0 2px 6px rgba(244, 162, 97, 0.6);
+  font-weight: 600;
+  border-radius: 12px;
+  margin-bottom: 8px;
+  padding: 10px 18px;
+  letter-spacing: 0.02em;
+  font-size: 1rem;
+}
+
+/* チェックボックスのアクセントカラーも変更 */
+.checkbox-input {
+  accent-color: #165a57;
 }
