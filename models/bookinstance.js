@@ -29,4 +29,4 @@ BookInstanceSchema.virtual("due_back_yyyy_mm_dd").get(function () {
 });
 
 // Export model.
-module.exports = mongoose.model("BookInstance", BookInstanceSchema);
+module.exports = mongoose.model("書籍コピー", BookInstanceSchema);

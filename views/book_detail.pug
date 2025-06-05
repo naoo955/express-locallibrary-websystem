@@ -1,13 +1,13 @@
 extends layout
 
 block content
-  h1 Title: !{book.title}
+  h1 タイトル: !{book.title}
 
-  p #[strong Author: ]
+  p #[strong 著者: ]
     a(href=book.author.url) #{book.author.name}
-  p #[strong Summary:] !{book.summary}
+  p #[strong 要約:] !{book.summary}
   p #[strong ISBN:] #{book.isbn}
-  p #[strong Genre: ]
+  p #[strong ジャンル: ]
     each val, index in book.genre
       a(href=val.url) #{val.name}
       if index < book.genre.length - 1
@@ -24,17 +24,17 @@ block content
         p.text-danger #{val.status}
       else
         p.text-warning #{val.status}
-      p #[strong Imprint:] #{val.imprint}
+      p #[strong 出版社:] #{val.imprint}
       if val.status!='Available'
-        p #[strong Due back:] #{val.due_back}
+        p #[strong 返却期限:] #{val.due_back}
       p #[strong Id: ]
         a(href=val.url) #{val._id}
 
     else
-      p There are no copies of this book in the library.
+      p この書籍は図書館にありません。
 
   hr
   p
-    a(href=book.url+'/delete') 本の削除
+    a(href=book.url+'/delete') 書籍の削除
   p
-    a(href=book.url+'/update') 本の更新
+    a(href=book.url+'/update') 書籍の更新
