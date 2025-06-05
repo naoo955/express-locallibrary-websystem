@@ -42,7 +42,7 @@ exports.genre_create_get = (req, res, next) => {
 // Handle Genre create on POST.
 exports.genre_create_post = [
   // Validate and sanitize the name field.
-  body("name", "Genre name must contain at least 3 characters")
+  body("name", "ジャンル名は3文字以上で入力してください。")
     .trim()
     .isLength({ min: 3 })
     .escape(),
